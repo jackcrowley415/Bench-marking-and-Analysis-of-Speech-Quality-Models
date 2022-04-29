@@ -1,0 +1,51 @@
+digraph {
+0 [shape=box, style=filled, fillcolor="#ffffff", label="Load DF"]
+1 [shape=box, style=filled, fillcolor="#ffffff", label="Wrangle Data"]
+2 [shape=box, style=filled, fillcolor="#ffffff", label="Add sr"]
+
+subgraph cluster_3 { 
+	3 [shape=box, style=filled, fillcolor="#009E73B3", label="DF Loop"]
+	4 [shape=box, style=filled, fillcolor="#ffffff", label="Tuple Transform"]
+	5 [shape=box, style=filled, fillcolor="#ffffff", label="Load Ref"]
+	6 [shape=box, style=filled, fillcolor="#ffffff", label="Load Test"]
+	7 [shape=box, style=filled, fillcolor="#0072B2B3", label="VAD"]
+	8 [shape=box, style=filled, fillcolor="#0072B2B3", label="MFCC"]
+	11 [shape=box, style=filled, fillcolor="#0072B2B3", label="MFCC SDTW"]
+	13 [shape=box, style=filled, fillcolor="#ffffff", label="Update DF MFCC"]
+	9 [shape=box, style=filled, fillcolor="#0072B2B3", label="Mel"]
+	10 [shape=box, style=filled, fillcolor="#0072B2B3", label="Mel SDTW"]
+	12 [shape=box, style=filled, fillcolor="#ffffff", label="Update DF Mel"]
+
+	subgraph cluster_14 { 
+		14 [shape=box, style=filled, fillcolor="#009E73B3", label="PESQ"]
+		15 [shape=box, style=filled, fillcolor="#E69F00B3", label="pesq_alignment"]
+		16 [shape=box, style=filled, fillcolor="#E69F00B3", label="pesq"]
+
+	 }
+	17 [shape=box, style=filled, fillcolor="#ffffff", label="Update DF PESQ"]
+
+ }
+18 [shape=box, style=filled, fillcolor="#ffffff", label="DF to csv"]
+19 [shape=box, style=filled, fillcolor="#ffffff", label="Graph Output"]
+3->4
+17->18
+10->12
+6->14
+18->19
+4->5
+5->6
+12->18
+14->15
+8->11
+0->1
+9->10
+1->2
+11->13
+7->9
+6->7
+15->16
+2->3
+7->8
+13->18
+16->17
+}

@@ -1,0 +1,15 @@
+{
+    "Load Signal":{
+    
+    "type": "LoadSignalNode",
+    "children":["Test Node"],
+    "output_key": "ref_signal",
+    "file_name_key": "ref_file",
+    "signal_path": "resources/reference/ref.wav"
+    },
+    "Test Node":{
+    "type": "RMSENode",
+    "output_key": "output",
+    "ref_signal_key": "ref_signal"
+    }
+}
